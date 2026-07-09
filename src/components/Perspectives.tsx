@@ -177,7 +177,7 @@ export default function Perspectives() {
           duration-300
           hover:bg-[#F0EEE5]
 
-          border border-[#B54323]
+          border border-[#B54323]/40
           
         "
                             >
