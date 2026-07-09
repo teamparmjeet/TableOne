@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
-
+import { FaInstagram } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
 export default function Header() {
     const router = useRouter()
     const pathname = usePathname()
@@ -176,12 +177,32 @@ export default function Header() {
                     <a
                         href="#request-seat"
                         onClick={(e) => scrollToSection(e, '#request-seat')}
-                        className={`mt-4 Note2 rounded-full border border-white px-4 py-2 transition-all hover:bg-white hover:text-black
+                        className={`mt-4 Note2 rounded-full border border-white px-4 py-1 transition-all hover:bg-white hover:text-black
                             ${activeSection === 'request-seat' ? 'bg-white text-black' : ''}
                         `}
                     >
                         REQUEST A SEAT
                     </a>
+
+                    <div className=" flex items-center gap-6">
+                        <a
+                            href="https://instagram.com/yourusername"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram"
+                            className="text-white transition-colors hover:text-[#B54323]"
+                        >
+                            <FaInstagram className="h-6 w-6" />
+                        </a>
+
+                        <a
+                            href="mailto:hello@tableone.com"
+                            aria-label="Email"
+                            className="text-white transition-colors hover:text-[#B54323]"
+                        >
+                            <HiOutlineMail className="h-6 w-6" />
+                        </a>
+                    </div>
                 </nav>
             </div>
         </header>

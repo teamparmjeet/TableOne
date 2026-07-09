@@ -178,7 +178,11 @@ export default function Request() {
                             </div>
 
 
-
+                            {/* Social Links */}
+                            <div className="grid  grid-cols-2 gap-x-8 gap-y-4  Note3 uppercase tracking-[0.15em] sm:flex sm:gap-10">
+                                <a href="#" className="hidden md:block">Instagram</a>
+                                <a href="#" className="hidden md:block">Email</a>
+                            </div>
                         </div>
                     </div>
                 </div>
