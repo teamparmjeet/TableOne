@@ -27,7 +27,7 @@ export default function NoiseSection() {
             alt="Atmospheric Street Photo"
             fill
             priority
-            className="pointer-events-none object-cover object-[50%_0%]"
+            className="pointer-events-none object-cover object-[0%_0%]"
           />
         </motion.div>
 

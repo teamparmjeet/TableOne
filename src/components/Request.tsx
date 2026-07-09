@@ -137,7 +137,7 @@ export default function Request() {
                                 placeholder="WHEN WAS THE LAST TIME YOU HAD A REAL CONVERSATION? WHAT MADE IT REAL?"
                                 className="mt-8 w-full resize-none border-b border-[#F0EEE5]/35 bg-transparent pb-10 Note3 uppercase tracking-[0.2em] text-[#F0EEE5] outline-none placeholder:text-[#F0EEE5]/45"
                             />
- 
+
 
                             <button
                                 type="submit"
