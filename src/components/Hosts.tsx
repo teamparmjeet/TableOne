@@ -69,7 +69,7 @@ export default function Hosts() {
             <div className="order-2 hidden lg:block lg:order-1 lg:w-52 text-center lg:text-right">
               <button
                 onClick={() => setActiveHost("anil")}
-                className=" Title4 text-[#FFF4E7] underline underline-offset-4 transition hover:opacity-80"
+                className=" Title4 text-[#FFF4E7]   transition hover:opacity-80"
               >
                 Anil Godhwani
               </button>
@@ -90,14 +90,14 @@ export default function Hosts() {
               <div className=" absolute  left-0 right-0 top-28 flex justify-evenly gap-2">
                 <button
                   onClick={() => setActiveHost("anil")}
-                  className="  Title4 block lg:hidden  text-[#FFF4E7] text-sm underline-offset-4 transition hover:opacity-80"
+                  className="  Title4 block lg:hidden  text-[#FFF4E7] text-sm   transition hover:opacity-80"
                 >
                   Anil Godhwani
                 </button>
 
                 <button
                   onClick={() => setActiveHost("manu")}
-                  className="  Title4 block lg:hidden  text-[#FFF4E7] text-sm underline-offset-4 transition hover:opacity-80"
+                  className="  Title4 block lg:hidden  text-[#FFF4E7] text-sm   transition hover:opacity-80"
                 >
                   Manu Rekhi
                 </button>
@@ -109,7 +109,7 @@ export default function Hosts() {
             <div className="order-3 hidden lg:block lg:w-52 text-center lg:text-left">
               <button
                 onClick={() => setActiveHost("manu")}
-                className="  Title4 text-[#FFF4E7] underline underline-offset-4 transition hover:opacity-80"
+                className="  Title4 text-[#FFF4E7]   transition hover:opacity-80"
               >
                 Manu Rekhi
               </button>
