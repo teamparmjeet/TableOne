@@ -12,7 +12,7 @@ export default function TableOneSection() {
         <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
 
           {/* Label */}
-          <span className="mb-10  md:mb-16 flex items-center pl-[0.4em] Note2 uppercase tracking-[0.4em] text-[#C6603F]">
+          <span className="mb-10  md:mb-16 flex items-center pl-[0.4em] Note3 uppercase tracking-[0.4em] text-[#C6603F]">
 
             <motion.span
               initial={{ width: 0 }}
@@ -25,22 +25,18 @@ export default function TableOneSection() {
           </span>
 
           {/* Heading */}
-          <h2 className="max-w-5xl Title1 text-[#36473F] leading-[1.15]
-          text-[34px]
-          sm:text-[44px]
-          md:text-[54px]
-          lg:text-[62px]">
+          <h2 className="max-w-5xl Title1 text-[#36473F] leading-[1.15] mb-10 md:mb-16">
             Table One is{" "}
-            <span className="text-[#C6603F]">for the curious</span>
+            <span className="block sm:inline text-[#C6603F]">
+              for the curious
+            </span>
           </h2>
 
           {/* Subtitle */}
           <p
             className="
            mb-10  md:mb-16
-            max-w-[550]
-            sm:my-14
-            lg:my-20
+            max-w-[550] 
            body1
             text-[#C6603F]
             leading-tight 
@@ -120,32 +116,30 @@ export default function TableOneSection() {
           {/* Features */}
           <div
             className="
-           mb-10 md:mb-16
-            grid
-            w-full
-            grid-cols-1
-            gap-10
-            sm:grid-cols-2
-            sm:gap-10
-            lg:grid-cols-3
-            lg:gap-20
-          "
+    mb-10 md:mb-16
+    grid
+    w-full
+    grid-cols-1
+    gap-10
+    sm:grid-cols-2
+    sm:gap-10
+    lg:grid-cols-3
+    lg:gap-20
+  "
           >
             {[
-              "Forces of\nnature",
-              "Intellectually\nhungry",
-              "Active\ncontributors",
-            ].map((item) => (
+              ["Forces of", "nature"],
+              ["Intellectually", "hungry"],
+              ["Active", "contributors"],
+            ].map(([first, second]) => (
               <h3
-                key={item}
-                className="
-                whitespace-pre-line
-                 Title2
-                text-[#36473F]
-                leading-[0.95] 
-              "
+                key={`${first}-${second}`}
+                className="Title2 text-[#36473F] leading-[0.95]"
               >
-                {item}
+                {first}
+                <br className="hidden md:block" />
+                <span className="md:hidden"> </span>
+                {second}
               </h3>
             ))}
           </div>
@@ -164,14 +158,15 @@ export default function TableOneSection() {
           {/* Bottom Text */}
           <p
             className="
-            Note2
-            uppercase
-            leading-tight
-            text-[#B54323] 
-          "
+    Note2
+    uppercase
+    leading-tight
+    text-[#B54323]
+  "
           >
             A community crafted across disciplines, geographies and ikigai.
-
+            <br className="hidden md:block" />
+            <span className="md:hidden"> </span>
             They are here, simply because they miss having a real conversation.
           </p>
         </div>

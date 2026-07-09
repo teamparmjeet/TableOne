@@ -72,7 +72,7 @@ export default function Request() {
                     <div className=" mb-10 md:mb-16 flex justify-center">
 
 
-                        <span className="Note2 text-[#B54323]  tracking-[0.4em] uppercase mb-10 md:mb-16 flex items-center pl-[0.4em]">
+                        <span className="Note3 text-[#B54323]  tracking-[0.4em] uppercase mb-10 md:mb-16 flex items-center pl-[0.4em]">
 
                             <motion.span
                                 initial={{ width: 0 }}
@@ -151,14 +151,14 @@ export default function Request() {
     mt-8 px-5 py-2
     Note3 font-semibold uppercase tracking-[0.25em]
     transition-all duration-300
-
-  
+ border border-[#C6603F] text-[#F0EEE5] hover:bg-[#C6603F]
+                                    
 
     disabled:cursor-not-allowed disabled:opacity-60
   `}
                             >
                                 {loading
-                                    ? " ... →"
+                                    ? "⟶"
                                     : success
                                         ? "Sent ✓"
                                         : "Table it →"}
@@ -170,18 +170,14 @@ export default function Request() {
                         <div className="flex flex-col gap-4 text-[#F0EEE5]/70 lg:flex-row lg:items-center lg:justify-between">
 
                             {/* Main Links */}
-                            <div className="grid grid-cols-2 gap-x-8 gap-y-4  Note3 uppercase tracking-[0.15em] sm:grid-cols-4 lg:flex lg:flex-wrap lg:gap-8">
+                            <div className="grid grid-cols-2 justify-items-center justify-center gap-x-8 gap-y-4 Note3 uppercase tracking-[0.15em] sm:grid-cols-4 lg:flex lg:flex-wrap lg:justify-start lg:gap-8">
                                 <a href="#conversations">Conversations</a>
                                 <a href="#community">Community</a>
                                 <a href="#perspectives">Perspectives</a>
                                 <a href="#hosts">Hosts</a>
                             </div>
 
-                            {/* Social Links */}
-                            <div className="grid grid-cols-2 gap-x-8 gap-y-4  Note3 uppercase tracking-[0.15em] sm:flex sm:gap-10">
-                                <a href="#">Instagram</a>
-                                <a href="#">Email</a>
-                            </div>
+
 
                         </div>
                     </div>

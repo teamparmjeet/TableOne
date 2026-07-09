@@ -5,74 +5,74 @@ import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 
 export default function Header() {
-  const router = useRouter()
-  const pathname = usePathname()
+    const router = useRouter()
+    const pathname = usePathname()
 
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled50, setScrolled50] = useState(false)
-  const [showLogo, setShowLogo] = useState(false)
-  const [activeSection, setActiveSection] = useState('')
+    const [isOpen, setIsOpen] = useState(false)
+    const [scrolled50, setScrolled50] = useState(false)
+    const [showLogo, setShowLogo] = useState(false)
+    const [activeSection, setActiveSection] = useState('')
 
-  const navItems = [
-    { name: 'CONVERSATIONS', href: '#conversations' },
-    { name: 'COMMUNITY', href: '#community' },
-    { name: 'PERSPECTIVES', href: '#perspectives' },
-    { name: 'HOSTS', href: '#hosts' },
-  ]
+    const navItems = [
+        { name: 'CONVERSATIONS', href: '#conversations' },
+        { name: 'COMMUNITY', href: '#community' },
+        { name: 'PERSPECTIVES', href: '#perspectives' },
+        { name: 'HOSTS', href: '#hosts' },
+    ]
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled50(window.scrollY > 50)
-      setShowLogo(window.scrollY > 200)
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled50(window.scrollY > 50)
+            setShowLogo(window.scrollY > 200)
 
-      const sectionElements = document.querySelectorAll('section[id]')
-      let current = ''
+            const sectionElements = document.querySelectorAll('section[id]')
+            let current = ''
 
-      sectionElements.forEach((section) => {
-        const sectionTop = (section as HTMLElement).offsetTop
-        if (window.scrollY >= sectionTop - 150) {
-          current = section.getAttribute('id') || ''
+            sectionElements.forEach((section) => {
+                const sectionTop = (section as HTMLElement).offsetTop
+                if (window.scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id') || ''
+                }
+            })
+
+            setActiveSection(current)
         }
-      })
 
-      setActiveSection(current)
+        handleScroll()
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    const scrollToSection = (
+        e: React.MouseEvent<HTMLAnchorElement>,
+        href: string
+    ) => {
+        e.preventDefault()
+
+        const targetId = href.replace('#', '')
+
+        // If user is not on home page, first go home with hash
+        if (pathname !== '/') {
+            router.push(`/${href}`)
+            setIsOpen(false)
+            return
+        }
+
+        const element = document.getElementById(targetId)
+
+        if (element) {
+            const headerOffset = 96
+            const offsetPosition =
+                element.getBoundingClientRect().top + window.scrollY - headerOffset
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth',
+            })
+        }
+
+        setIsOpen(false)
     }
-
-    handleScroll()
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    e.preventDefault()
-
-    const targetId = href.replace('#', '')
-
-    // If user is not on home page, first go home with hash
-    if (pathname !== '/') {
-      router.push(`/${href}`)
-      setIsOpen(false)
-      return
-    }
-
-    const element = document.getElementById(targetId)
-
-    if (element) {
-      const headerOffset = 96
-      const offsetPosition =
-        element.getBoundingClientRect().top + window.scrollY - headerOffset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      })
-    }
-
-    setIsOpen(false)
-  }
 
     return (
         <header className="fixed top-0 left-0 z-50 w-full py-6 text-white font-pitch font-semibold uppercase tracking-widest text-xs lg:text-sm">

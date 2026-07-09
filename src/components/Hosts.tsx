@@ -39,7 +39,7 @@ export default function Hosts() {
           {/* Top Label */}
           <div className="  flex justify-center">
 
-            <span className=" Note2 text-[#F0EEE5]   tracking-[0.4em] uppercase mb-10 md:mb-16 flex items-center pl-[0.4em]">
+            <span className=" Note3 text-[#F0EEE5]   tracking-[0.4em] uppercase mb-10 md:mb-16 flex items-center pl-[0.4em]">
 
               <motion.span
                 initial={{ width: 0 }}
@@ -169,18 +169,7 @@ export default function Hosts() {
                 {host.name}
               </h3>
 
-              {/* Title */}
-              <p
-                className="
-          mt-4
-          max-w-3xl
-         body2
-          leading-relaxed
-          text-[#B54323]
-        "
-              >
-                {host.title}
-              </p>
+             
 
               {/* Description */}
               <div
@@ -197,16 +186,14 @@ export default function Hosts() {
                   <p key={index}>{para}</p>
                 ))}
               </div>
-
-              {/* Divider */}
-              <div className="my-8 h-px w-full bg-[#B54323]/20" />
+ 
 
               {/* Footer */}
               <p
                 className="
-          body2
+          body2 mt-7
           leading-relaxed
-          text-[#36473F]/80
+          text-[#B54323]
         "
               >
                 Table One grew out of a shared instinct, a chance meeting and a

@@ -8,7 +8,7 @@ export default function About() {
                 <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
 
                     {/* Section Label - Pitch Sans */}
-                    <span className="Note2 text-[#C6603F]  tracking-[0.4em]  uppercase mb-10 md:mb-16 flex items-center pl-[0.4em]">
+                    <span className="Note3 text-[#C6603F]  tracking-[0.4em]  uppercase mb-10 md:mb-16 flex items-center pl-[0.4em]">
 
                         <motion.span
                             initial={{ width: 0 }}
@@ -26,7 +26,7 @@ export default function About() {
                         Table One is symbolic
                         of the first time you had <br></br>
                         <span className="text-[#B54323]"> a real conversation </span> <br></br>
-                        and an invitation to
+                        and an invitation to <br></br>
                         have them again.
                     </h2>
 

@@ -15,7 +15,7 @@ export default function Conversation() {
                 <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
 
                     {/* Section Label - Pitch Sans with Horizontal Left-Accent Line */}
-                    <span className="Note2 text-[#F0EEE5]  tracking-[0.4em] uppercase mb-10 md:mb-16 flex items-center pl-[0.4em]">
+                    <span className="Note3 text-[#F0EEE5]  tracking-[0.4em] uppercase mb-10 md:mb-16 flex items-center pl-[0.4em]">
 
                         <motion.span
                             initial={{ width: 0 }}
@@ -28,7 +28,7 @@ export default function Conversation() {
                     </span>
 
                     {/* Core Message Display - BN Cringe Serif */}
-                    <h2 className="Title1 text-[#F0EEE5] max-w-5xl  leading-[1.2] md:leading-[1.12] tracking-normal">
+                    <h2 className="Title1 text-[#F0EEE5] max-w-5xl mb-2 md:mb-0  leading-[1.2] md:leading-[1.12] tracking-normal">
                         Five people. One table. One question.
                     </h2>
                     <p className="Title3 text-[#202A44] mb-10 md:mb-16">

@@ -52,7 +52,7 @@ export default function Perspectives() {
 
                     {/* Section Label - Pitch Sans with Horizontal Left-Accent Line */}
 
-                    <span className="  text-[#B54323] text-[11px]  Note2 tracking-[0.4em] uppercase mb-10 md:mb-16 flex items-center pl-[0.4em]">
+                    <span className="  text-[#B54323] text-[11px]  Note3 tracking-[0.4em] uppercase mb-10 md:mb-16 flex items-center pl-[0.4em]">
 
                         <motion.span
                             initial={{ width: 0 }}
@@ -71,9 +71,12 @@ export default function Perspectives() {
                         </span>
 
                     </h2>
-                    <p className=" body1 font-normal   leading-tight mb-10 md:mb-16 text-[#202A44]  ">
-                        Come prepared. Come curious. Come present.
-                    </p>
+                   <p className="body1 font-normal leading-tight mb-10 md:mb-16 text-[#202A44]">
+  Come prepared. Come curious.
+  <br className="block md:hidden" />
+  <span className="hidden md:inline"> </span>
+  Come present.
+</p>
 
  
 
