@@ -128,7 +128,7 @@ export default function Header() {
                     <a
                         href="#request-seat"
                         onClick={(e) => scrollToSection(e, '#request-seat')}
-                        className={`rounded-full border border-white px-4 py-2 text-[18px] transition-all hover:bg-white hover:text-black
+                        className={`rounded-full border border-white px-4 py-2 Note2 transition-all hover:bg-white hover:text-black
                             ${activeSection === 'request-seat' ? 'bg-white text-black' : ''}
                         `}
                     >
@@ -176,7 +176,7 @@ export default function Header() {
                     <a
                         href="#request-seat"
                         onClick={(e) => scrollToSection(e, '#request-seat')}
-                        className={`mt-4 rounded-full border border-white px-4 py-2 transition-all hover:bg-white hover:text-black
+                        className={`mt-4 Note2 rounded-full border border-white px-4 py-2 transition-all hover:bg-white hover:text-black
                             ${activeSection === 'request-seat' ? 'bg-white text-black' : ''}
                         `}
                     >

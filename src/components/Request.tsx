@@ -152,16 +152,13 @@ export default function Request() {
     Note3 font-semibold uppercase tracking-[0.25em]
     transition-all duration-300
 
-    ${success
-                                        ? "border border-green-500 bg-green-500 text-white hover:bg-green-600 hover:border-green-600"
-                                        : "border border-[#C6603F] text-[#F0EEE5] hover:bg-[#C6603F]"
-                                    }
+  
 
     disabled:cursor-not-allowed disabled:opacity-60
   `}
                             >
                                 {loading
-                                    ? "Submitting..."
+                                    ? " ... →"
                                     : success
                                         ? "Sent ✓"
                                         : "Table it →"}
