@@ -113,7 +113,7 @@ export default function Header() {
                                 key={item.name}
                                 href={item.href}
                                 onClick={(e) => scrollToSection(e, item.href)}
-                                className={`Note2 transition-all duration-300 hover:opacity-70 
+                                className={`Note2 transition-all duration-300   hover:text-[#B54323]
                                     ${isActive ? 'text-[#B54323]  ' : 'text-white'}
                                 `}
                             >
@@ -164,7 +164,7 @@ export default function Header() {
                                 key={item.name}
                                 href={item.href}
                                 onClick={(e) => scrollToSection(e, item.href)}
-                                className={`transition-colors hover:text-stone-400 Note2
+                                className={`transition-colors   Note2 hover:text-[#B54323]
                                     ${isActive ? 'text-[#B54323] font-bold' : 'text-white'}
                                 `}
                             >
@@ -195,7 +195,7 @@ export default function Header() {
                         </a>
 
                         <a
-                            href="mailto:hello@tableone.com"
+                            href="mailto:arshiya.khosla@gmail.com"
                             aria-label="Email"
                             className="text-white transition-colors hover:text-[#B54323]"
                         >

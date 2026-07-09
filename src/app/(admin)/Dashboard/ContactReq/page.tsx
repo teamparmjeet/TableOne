@@ -54,7 +54,56 @@ export default function ContactReqPage() {
       setLoading(false);
     }
   };
+const exportToExcel = () => {
+  if (filteredRequests.length === 0) {
+    alert("No requests available to export.");
+    return;
+  }
 
+  const headers = [
+    "ID",
+    "Name",
+    "Email",
+    "Address",
+    "Description",
+    "Created At",
+    "Updated At",
+  ];
+
+  const rows = filteredRequests.map((req) => [
+    req.id,
+    req.name,
+    req.email,
+    req.address,
+    req.description,
+    formatDate(req.created_at),
+    formatDate(req.updated_at),
+  ]);
+
+  const csvContent = [
+    headers,
+    ...rows,
+  ]
+    .map((row) =>
+      row
+        .map((value) => `"${String(value).replace(/"/g, '""')}"`)
+        .join(",")
+    )
+    .join("\n");
+
+  const blob = new Blob([csvContent], {
+    type: "text/csv;charset=utf-8;",
+  });
+
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "contact_requests.csv";
+  link.click();
+
+  URL.revokeObjectURL(url);
+};
   const filteredRequests = requests.filter((req) => {
     const value = `${req.name} ${req.email} ${req.address} ${req.description}`;
     return value.toLowerCase().includes(search.toLowerCase());
@@ -111,7 +160,24 @@ export default function ContactReqPage() {
               Contact Requests
             </h1>
           </div>
-
+<button
+  onClick={exportToExcel}
+  className="
+    rounded-full
+    bg-[#202A44]
+    px-5
+    py-3
+    font-pitch
+    text-[12px]
+    uppercase
+    tracking-[0.2em]
+    text-white
+    transition
+    hover:bg-[#C6603F]
+  "
+>
+  Export Excel
+</button>
           <div className="relative w-full md:max-w-sm">
             <Search
               size={16}

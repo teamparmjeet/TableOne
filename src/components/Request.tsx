@@ -137,12 +137,7 @@ export default function Request() {
                                 placeholder="WHEN WAS THE LAST TIME YOU HAD A REAL CONVERSATION? WHAT MADE IT REAL?"
                                 className="mt-8 w-full resize-none border-b border-[#F0EEE5]/35 bg-transparent pb-10 Note3 uppercase tracking-[0.2em] text-[#F0EEE5] outline-none placeholder:text-[#F0EEE5]/45"
                             />
-
-                            {message && (
-                                <p className="mt-6 font-pitch text-[11px] uppercase tracking-[0.2em] text-[#F0EEE5]/70">
-                                    {message}
-                                </p>
-                            )}
+ 
 
                             <button
                                 type="submit"
@@ -151,6 +146,7 @@ export default function Request() {
     mt-8 px-5 py-2
     Note3 font-semibold uppercase tracking-[0.25em]
     transition-all duration-300
+     w-36
  border border-[#C6603F] text-[#F0EEE5] hover:bg-[#C6603F]
                                     
 
@@ -181,7 +177,7 @@ export default function Request() {
                             {/* Social Links */}
                             <div className="grid  grid-cols-2 gap-x-8 gap-y-4  Note3 uppercase tracking-[0.15em] sm:flex sm:gap-10">
                                 <a href="#" className="hidden md:block">Instagram</a>
-                                <a href="#" className="hidden md:block">Email</a>
+                                <a href="mailto:arshiya.khosla@gmail.com" className="hidden md:block">Email</a>
                             </div>
                         </div>
                     </div>

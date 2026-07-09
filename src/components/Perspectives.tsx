@@ -10,8 +10,9 @@ type Blog = {
     category: string;
 };
 import FadeInSection from "./FadeInSection";
+import Link from "next/link";
 export default function Perspectives() {
-   const numRows = 20;
+    const numRows = 20;
     const numCols = 20;
     const totalDots = numRows * numCols;
     const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -71,17 +72,17 @@ export default function Perspectives() {
                         </span>
 
                     </h2>
-                   <p className="body1 font-normal leading-tight mb-10 md:mb-16 text-[#202A44]">
-  Come prepared. Come curious.
-  <br className="block md:hidden" />
-  <span className="hidden md:inline"> </span>
-  Come present.
-</p>
-
- 
+                    <p className="body1 font-normal leading-tight mb-10 md:mb-16 text-[#202A44]">
+                        Come prepared. Come curious.
+                        <br className="block md:hidden" />
+                        <span className="hidden md:inline"> </span>
+                        Come present.
+                    </p>
 
 
-                     <motion.div
+
+
+                    <motion.div
                         className="relative w-38 h-38 md:w-45 md:h-45 flex items-center justify-center  mb-10 md:mb-16  group"
                         initial="hidden"
                         whileInView="visible"
@@ -164,7 +165,8 @@ export default function Perspectives() {
     "
                     >
                         {blogs.map((blog) => (
-                            <article
+                            <Link
+                            href="/Blog"
                                 key={blog.id}
                                 className="
           group
@@ -196,7 +198,7 @@ export default function Perspectives() {
                                         {blog.category}
                                     </span>
                                 </div>
-                            </article>
+                            </Link>
                         ))}
                     </div>
                 </div>

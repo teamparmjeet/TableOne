@@ -120,7 +120,7 @@ export default function TableOneSection() {
     grid
     w-full
     grid-cols-1
-    gap-10
+    gap-4
     sm:grid-cols-2
     sm:gap-10
     lg:grid-cols-3
