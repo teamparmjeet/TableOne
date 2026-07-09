@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --font-cringe: var(--font-cringe-serif), serif;
+  --font-zirkon: var(--font-gt-zirkon), sans-serif;
+  --font-pitch: var(--font-pitch-sans), sans-serif;
+}
+
+
+
+body {}
