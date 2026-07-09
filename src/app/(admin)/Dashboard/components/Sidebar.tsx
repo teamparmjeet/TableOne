@@ -12,12 +12,12 @@ const navLinks = [
     icon: LayoutDashboard,
   },
   {
-    name: "Blog",
-    href: "/Dashboard/Blog",
+    name: "Insight",
+    href: "/Dashboard/insight",
     icon: Newspaper,
   },
   {
-    name: "Contact Req",
+    name: "Request Seat",
     href: "/Dashboard/ContactReq",
     icon: MailQuestion,
   },

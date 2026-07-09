@@ -34,7 +34,46 @@ export default function page() {
     description: "",
     category: "",
   });
+  const [filters, setFilters] = useState({
+    title: "",
+    date: "",
+    location: "All",
+    category: "All",
+  });
 
+  const categories = [
+    "All",
+    ...Array.from(new Set(blogs.map((blog) => blog.category))),
+  ];
+
+  const locations = [
+    "All",
+    ...Array.from(new Set(blogs.map((blog) => blog.location))),
+  ];
+
+  const filteredBlogs = blogs.filter((blog) => {
+    const matchTitle = blog.title
+      .toLowerCase()
+      .includes(filters.title.toLowerCase());
+
+    const matchDate =
+      !filters.date || blog.date.startsWith(filters.date);
+
+    const matchCategory =
+      filters.category === "All" ||
+      blog.category === filters.category;
+
+    const matchLocation =
+      filters.location === "All" ||
+      blog.location === filters.location;
+
+    return (
+      matchTitle &&
+      matchDate &&
+      matchCategory &&
+      matchLocation
+    );
+  });
   const fetchBlogs = async () => {
     try {
       const res = await fetch("/api/blog?admin=true", {
@@ -47,7 +86,7 @@ export default function page() {
         setBlogs(data.blogs);
       }
     } catch (error) {
-      console.error("Fetch blogs error:", error);
+      console.error("Fetch Insight error:", error);
     }
   };
 
@@ -82,10 +121,10 @@ export default function page() {
         setOpen(false);
         fetchBlogs();
       } else {
-        alert(data.message || "Failed to create blog");
+        alert(data.message || "Failed to create Insight");
       }
     } catch (error) {
-      console.error("Create blog error:", error);
+      console.error("Create Insight error:", error);
       alert("Something went wrong");
     } finally {
       setLoading(false);
@@ -94,7 +133,7 @@ export default function page() {
 
 
   const handleDelete = async (id: number) => {
-    if (!confirm("Delete this blog?")) return;
+    if (!confirm("Delete this Insight?")) return;
 
     try {
       const res = await fetch(`/api/blog/${id}`, {
@@ -179,14 +218,13 @@ export default function page() {
         <div className="mb-2 flex flex-col gap-4 rounded border border-[#36473F]/10 bg-white/60 p-5 shadow-sm backdrop-blur sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#C6603F]">
-              Blog Manager
+              Admin Panel
             </p>
-            <h1 className="mt-2 text-3xl font-bold tracking-tight text-[#36473F]">
-              Blogs
+            <h1 className="Title2 leading-none text-[#202A44] ">
+
+              Insight
             </h1>
-            <p className="mt-1 text-sm text-[#36473F]/60">
-              Add and manage rich text blog entries.
-            </p>
+
           </div>
 
           <button
@@ -206,51 +244,159 @@ export default function page() {
             className="flex w-full items-center justify-center gap-2 rounded-full bg-[#B54323] px-5 py-3 text-sm font-bold uppercase tracking-[0.2em] text-white transition hover:bg-[#36473F] sm:w-auto"
           >
             <Plus size={18} />
-            Add Blog
+            Add Insight
           </button>
         </div>
+        <div className="mb-5 rounded-xl border border-[#36473F]/10 bg-white p-5 shadow-sm">
 
+          <div className="mb-4 flex items-center justify-between">
+            <h3 className="text-sm font-bold uppercase tracking-[0.25em] text-[#202A44]">
+              Filter Insights
+            </h3>
+
+            <button
+              onClick={() =>
+                setFilters({
+                  title: "",
+                  date: "",
+                  location: "All",
+                  category: "All",
+                })
+              }
+              className="rounded-full bg-[#B54323]/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#B54323] transition hover:bg-[#B54323] hover:text-white"
+            >
+              Reset
+            </button>
+          </div>
+
+
+          <div className="grid gap-4 md:grid-cols-4">
+
+            <input
+              type="text"
+              placeholder="Search insight..."
+              value={filters.title}
+              onChange={(e) =>
+                setFilters({
+                  ...filters,
+                  title: e.target.value,
+                })
+              }
+              className="rounded-lg border border-[#36473F]/20 bg-[#F0EEE5]/40 px-4 py-3 text-sm outline-none transition focus:border-[#C6603F]"
+            />
+
+
+            <input
+              type="date"
+              value={filters.date}
+              onChange={(e) =>
+                setFilters({
+                  ...filters,
+                  date: e.target.value,
+                })
+              }
+              className="rounded-lg border border-[#36473F]/20 bg-[#F0EEE5]/40 px-4 py-3 text-sm outline-none transition focus:border-[#C6603F]"
+            />
+
+
+            <div className="relative">
+              <select
+                value={filters.category}
+                onChange={(e) =>
+                  setFilters({
+                    ...filters,
+                    category: e.target.value,
+                  })
+                }
+                className="w-full appearance-none rounded-lg border border-[#36473F]/20 bg-[#F0EEE5]/40 px-4 py-3 text-sm outline-none focus:border-[#C6603F]"
+              >
+                {categories.map((item) => (
+                  <option key={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+
+              <ChevronDown
+                size={16}
+                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#C6603F]"
+              />
+            </div>
+
+
+            <div className="relative">
+              <select
+                value={filters.location}
+                onChange={(e) =>
+                  setFilters({
+                    ...filters,
+                    location: e.target.value,
+                  })
+                }
+                className="w-full appearance-none rounded-lg border border-[#36473F]/20 bg-[#F0EEE5]/40 px-4 py-3 text-sm outline-none focus:border-[#C6603F]"
+              >
+                {locations.map((item) => (
+                  <option key={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+
+              <ChevronDown
+                size={16}
+                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#C6603F]"
+              />
+            </div>
+
+          </div>
+
+
+          <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-[#36473F]/50">
+            Showing {filteredBlogs.length} of {blogs.length} insights
+          </p>
+
+        </div>
         {blogs.length === 0 ? (
           <div className="rounded border border-dashed border-[#36473F]/20 bg-white/50 p-10 text-center">
             <h2 className="text-xl font-bold text-[#36473F]">
-              No blogs added yet
+              No Insights added yet
             </h2>
             <p className="mt-2 text-sm text-[#36473F]/60">
-              Click Add Blog to create your first blog.
+              Click Add Insight to create your first Insight.
             </p>
           </div>
         ) : (
-          <div className="overflow-hidden rounded border border-[#36473F]/10 bg-white/70 shadow-sm">
+          <div className="overflow-hidden rounded border border-[#36473F]/10 bg-white shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full min-w-225 text-left">
-                <thead className="bg-[#36473F] text-white">
+                <thead className="bg-[#202A44]">
                   <tr>
-                    <th className="px-5 py-4 text-xs font-bold uppercase tracking-[0.2em]">
+                    <th className="px-5 py-4 text-left font-pitch text-[10px] font-semibold uppercase tracking-[0.25em] text-[#F0EEE5]">
                       Title
                     </th>
-                    <th className="px-5 py-4 text-xs font-bold uppercase tracking-[0.2em]">
+                    <th className="px-5 py-4 text-left font-pitch text-[10px] font-semibold uppercase tracking-[0.25em] text-[#F0EEE5]">
                       Date
                     </th>
-                    <th className="px-5 py-4 text-xs font-bold uppercase tracking-[0.2em]">
+                    <th className="px-5 py-4 text-left font-pitch text-[10px] font-semibold uppercase tracking-[0.25em] text-[#F0EEE5]">
                       Location
                     </th>
-                    <th className="px-5 py-4 text-xs font-bold uppercase tracking-[0.2em]">
+                    <th className="px-5 py-4 text-left font-pitch text-[10px] font-semibold uppercase tracking-[0.25em] text-[#F0EEE5]">
                       Category
                     </th>
-                    <th className="px-5 py-4 text-center">
+                    <th className="px-5 py-4 text-left font-pitch text-[10px] font-semibold uppercase tracking-[0.25em] text-[#F0EEE5]">
                       Actions
                     </th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  {blogs.map((blog, index) => {
+                  {filteredBlogs.map((blog, index) => {
                     const isOpen = openRow === blog.id;
 
                     return (
                       <React.Fragment key={blog.id}>
                         <tr
-                         
+
                           className="border-b border-[#36473F]/10 transition hover:bg-[#F0EEE5]/70"
                         >
                           <td className="px-5 py-4">
@@ -272,7 +418,7 @@ export default function page() {
                           </td>
 
                           <td className="px-5 py-4">
-                            <span className="rounded-full bg-[#C6603F]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.15em] text-[#B54323]">
+                            <span className="rounded-full bg-[#C6603F]/10 px-3 py-1 text-xs font-bold uppercase   inline text-[#B54323]">
                               {blog.category}
                             </span>
                           </td>
@@ -339,10 +485,10 @@ export default function page() {
             <div className="mb-6 flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#C6603F]">
-                  {editingId ? "Update Blog" : "New Blog"}
+                  {editingId ? "Update Insight" : "New Insight"}
                 </p>
                 <h2 className="mt-2 text-2xl font-bold text-[#36473F]">
-                  {editingId ? "Edit Blog" : "Add Blog"}
+                  {editingId ? "Edit Insight" : "Add Insight"}
                 </h2>
               </div>
 
@@ -364,7 +510,7 @@ export default function page() {
               <input
                 type="text"
                 required
-                placeholder="Blog title"
+                placeholder="Insight title"
                 value={form.title}
                 onChange={(e) =>
                   setForm({ ...form, title: e.target.value })
@@ -427,8 +573,8 @@ export default function page() {
                     ? "Updating..."
                     : "Saving..."
                   : editingId
-                    ? "Update Blog"
-                    : "Save Blog"}
+                    ? "Update Insight"
+                    : "Save Insight"}
               </button>
             </form>
           </div>

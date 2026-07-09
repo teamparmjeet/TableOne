@@ -151,12 +151,12 @@ export default function ContactReqPage() {
   return (
     <section className=" ">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+         <div className="mb-2 flex flex-col gap-4 rounded border border-[#36473F]/10 bg-white/60 p-5 shadow-sm backdrop-blur sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="mb-2 font-pitch text-[10px] font-semibold uppercase tracking-[0.35em] text-[#C6603F]">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#C6603F]">
               Admin Panel
             </p>
-            <h1 className="font-cringe text-[38px] leading-none text-[#202A44] md:text-[52px]">
+            <h1 className="Title2 leading-none text-[#202A44] ">
                Requests seat
             </h1>
           </div>
