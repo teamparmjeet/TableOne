@@ -141,7 +141,7 @@ export default function TableOneSection() {
                 className="
                 whitespace-pre-line
                  Title2
-                text-[#17342e]
+                text-[#36473F]
                 leading-[0.95] 
               "
               >
