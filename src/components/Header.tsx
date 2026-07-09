@@ -113,8 +113,8 @@ export default function Header() {
                                 key={item.name}
                                 href={item.href}
                                 onClick={(e) => scrollToSection(e, item.href)}
-                                className={`Note2 transition-all duration-300   hover:text-[#B54323]
-                                    ${isActive ? 'text-[#B54323]  ' : 'text-white'}
+                                className={`Note2 transition-all duration-300   hover:text-[#C6603F]
+                                    ${isActive ? 'text-[#C6603F]  ' : 'text-white'}
                                 `}
                             >
                                 {item.name}
@@ -164,8 +164,8 @@ export default function Header() {
                                 key={item.name}
                                 href={item.href}
                                 onClick={(e) => scrollToSection(e, item.href)}
-                                className={`transition-colors   Note2 hover:text-[#B54323]
-                                    ${isActive ? 'text-[#B54323] font-bold' : 'text-white'}
+                                className={`transition-colors   Note2 hover:text-[#C6603F]
+                                    ${isActive ? 'text-[#C6603F] font-bold' : 'text-white'}
                                 `}
                             >
                                 {item.name}
@@ -189,7 +189,7 @@ export default function Header() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Instagram"
-                            className="text-white transition-colors hover:text-[#B54323]"
+                            className="text-white transition-colors hover:text-[#C6603F]"
                         >
                             <FaInstagram className="h-6 w-6" />
                         </a>
@@ -197,7 +197,7 @@ export default function Header() {
                         <a
                             href="mailto:arshiya.khosla@gmail.com"
                             aria-label="Email"
-                            className="text-white transition-colors hover:text-[#B54323]"
+                            className="text-white transition-colors hover:text-[#C6603F]"
                         >
                             <HiOutlineMail className="h-6 w-6" />
                         </a>
