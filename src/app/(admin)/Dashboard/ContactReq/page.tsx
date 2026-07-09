@@ -54,56 +54,56 @@ export default function ContactReqPage() {
       setLoading(false);
     }
   };
-const exportToExcel = () => {
-  if (filteredRequests.length === 0) {
-    alert("No requests available to export.");
-    return;
-  }
+  const exportToExcel = () => {
+    if (filteredRequests.length === 0) {
+      alert("No requests available to export.");
+      return;
+    }
 
-  const headers = [
-    "ID",
-    "Name",
-    "Email",
-    "Address",
-    "Description",
-    "Created At",
-    "Updated At",
-  ];
+    const headers = [
+      "ID",
+      "Name",
+      "Email",
+      "Address",
+      "Description",
+      "Created At",
+      "Updated At",
+    ];
 
-  const rows = filteredRequests.map((req) => [
-    req.id,
-    req.name,
-    req.email,
-    req.address,
-    req.description,
-    formatDate(req.created_at),
-    formatDate(req.updated_at),
-  ]);
+    const rows = filteredRequests.map((req) => [
+      req.id,
+      req.name,
+      req.email,
+      req.address,
+      req.description,
+      formatDate(req.created_at),
+      formatDate(req.updated_at),
+    ]);
 
-  const csvContent = [
-    headers,
-    ...rows,
-  ]
-    .map((row) =>
-      row
-        .map((value) => `"${String(value).replace(/"/g, '""')}"`)
-        .join(",")
-    )
-    .join("\n");
+    const csvContent = [
+      headers,
+      ...rows,
+    ]
+      .map((row) =>
+        row
+          .map((value) => `"${String(value).replace(/"/g, '""')}"`)
+          .join(",")
+      )
+      .join("\n");
 
-  const blob = new Blob([csvContent], {
-    type: "text/csv;charset=utf-8;",
-  });
+    const blob = new Blob([csvContent], {
+      type: "text/csv;charset=utf-8;",
+    });
 
-  const url = URL.createObjectURL(blob);
+    const url = URL.createObjectURL(blob);
 
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "contact_requests.csv";
-  link.click();
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "contact_requests.csv";
+    link.click();
 
-  URL.revokeObjectURL(url);
-};
+    URL.revokeObjectURL(url);
+  };
   const filteredRequests = requests.filter((req) => {
     const value = `${req.name} ${req.email} ${req.address} ${req.description}`;
     return value.toLowerCase().includes(search.toLowerCase());
@@ -149,7 +149,7 @@ const exportToExcel = () => {
   };
 
   return (
-    <section className="min-h-screen bg-[#F0EEE5] px-4 py-8 sm:px-6 lg:px-10">
+    <section className=" ">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
@@ -157,13 +157,13 @@ const exportToExcel = () => {
               Admin Panel
             </p>
             <h1 className="font-cringe text-[38px] leading-none text-[#202A44] md:text-[52px]">
-              Contact Requests
+               Requests seat
             </h1>
           </div>
-<button
-  onClick={exportToExcel}
-  className="
-    rounded-full
+          <button
+            onClick={exportToExcel}
+            className="
+    rounded
     bg-[#202A44]
     px-5
     py-3
@@ -175,9 +175,9 @@ const exportToExcel = () => {
     transition
     hover:bg-[#C6603F]
   "
->
-  Export Excel
-</button>
+          >
+            Export Excel
+          </button>
           <div className="relative w-full md:max-w-sm">
             <Search
               size={16}
@@ -191,12 +191,12 @@ const exportToExcel = () => {
                 setSearch(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full rounded-full border border-[#202A44]/15 bg-white px-11 py-3 font-pitch text-[12px] text-[#202A44] outline-none placeholder:text-[#202A44]/40"
+              className="w-full rounded border border-[#202A44]/15 bg-white px-11 py-3 font-pitch text-[12px] text-[#202A44] outline-none placeholder:text-[#202A44]/40"
             />
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-[22px] border border-[#202A44]/10 bg-white shadow-sm">
+        <div className="overflow-hidden rounded border border-[#202A44]/10 bg-white shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full min-w-250 border-collapse">
               <thead className="bg-[#202A44]">
@@ -311,7 +311,7 @@ const exportToExcel = () => {
           </div>
           {selectedRequest && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-              <div className="w-full max-w-2xl rounded-2xl bg-white shadow-2xl">
+              <div className="w-full max-w-2xl rounded bg-white shadow-2xl">
 
                 <div className="flex items-center justify-between border-b px-6 py-5">
                   <div>

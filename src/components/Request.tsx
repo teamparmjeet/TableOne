@@ -146,7 +146,7 @@ export default function Request() {
     mt-8 px-5 py-2
     Note3 font-semibold uppercase tracking-[0.25em]
     transition-all duration-300
-     w-36
+     w-40
  border border-[#C6603F] text-[#F0EEE5] hover:bg-[#C6603F]
                                     
 

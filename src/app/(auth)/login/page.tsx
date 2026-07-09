@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -35,17 +35,22 @@ export default function LoginPage() {
         <div className="w-full max-w-md rounded-[2rem] border border-[#36473F]/10 bg-white/55 p-8 shadow-sm backdrop-blur md:p-10">
           <div className="mb-10 text-center">
             <span className="mb-5 flex items-center justify-center pl-[0.4em] font-pitch text-[11px] font-semibold uppercase tracking-[0.4em] text-[#C6603F] md:text-xs">
-              <span className="me-2 block h-[0.5px] w-[50px] bg-[#C6603F]" />
-              LOGIN
-            </span>
+              <Image
+                src="/Group 1.png"
+                alt="Table One"
+                width={100}
+                height={100}
+                priority
+                className="object-contain"
+              />
+</span>
+              <h1 className="font-cringe text-[42px] font-[400] leading-[1.1] text-[#36473F] md:text-[56px]">
+                Table One
+              </h1>
 
-            <h1 className="font-cringe text-[42px] font-[400] leading-[1.1] text-[#36473F] md:text-[56px]">
-              Welcome Back
-            </h1>
-
-            <p className="mt-4 text-sm leading-6 text-[#36473F]/70">
-              Login with your username and password to continue.
-            </p>
+              <p className="mt-4 text-sm leading-6 text-[#36473F]/70">
+                Login with your username and password to continue.
+              </p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-5">
@@ -66,7 +71,7 @@ export default function LoginPage() {
 
             <div>
               <label className=" mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-[#36473F]/70">
-                Password 
+                Password
               </label>
               <input
                 type="password"

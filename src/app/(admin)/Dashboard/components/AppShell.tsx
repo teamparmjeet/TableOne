@@ -14,7 +14,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       {/* Main Content Area */}
       <div className="flex flex-col flex-1 min-w-0">
         <Header onMenuClick={() => setIsSidebarOpen(true)} />
-        <main className="flex-1 p-2 overflow-y-auto">
+        <main className="flex-1 p-2 overflow-y-auto bg-[#F0EEE5]  ">
           {children}
         </main>
       </div>

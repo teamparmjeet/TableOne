@@ -64,14 +64,14 @@ export default function Sidebar({
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={`group flex items-center gap-3 rounded px-2 py-1 text-sm font-semibold transition-all ${isActive
-                    ? "bg-amber-500 text-white shadow-lg shadow-amber-500/25"
-                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+                  ? "bg-amber-500 text-white shadow-lg shadow-amber-500/25"
+                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-950"
                   }`}
               >
                 <span
                   className={`flex h-6 w-6 items-center justify-center rounded-xl transition ${isActive
-                      ? "bg-white/20 text-white"
-                      : "bg-slate-100 text-slate-500 group-hover:bg-white"
+                    ? "bg-white/20 text-white"
+                    : "bg-slate-100 text-slate-500 group-hover:bg-white"
                     }`}
                 >
                   <Icon size={18} />
