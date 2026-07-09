@@ -61,10 +61,9 @@ export default function Header() {
 
         const element = document.getElementById(targetId)
 
-        if (element) {
-            const headerOffset = 96
+        if (element) { 
             const offsetPosition =
-                element.getBoundingClientRect().top + window.scrollY - headerOffset
+                element.getBoundingClientRect().top + window.scrollY  
 
             window.scrollTo({
                 top: offsetPosition,
