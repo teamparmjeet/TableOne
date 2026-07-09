@@ -65,8 +65,8 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-[#36473F]/70">
-                Password
+              <label className=" mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-[#36473F]/70">
+                Password 
               </label>
               <input
                 type="password"
@@ -74,7 +74,7 @@ export default function LoginPage() {
                 onChange={(e) =>
                   setForm({ ...form, password: e.target.value })
                 }
-                placeholder="Enter password"
+                placeholder="Enter password."
                 className="w-full rounded-full border border-[#36473F]/15 bg-[#F0EEE5]/70 px-5 py-4 text-sm text-[#36473F] outline-none transition placeholder:text-[#36473F]/40 focus:border-[#C6603F]"
               />
             </div>
