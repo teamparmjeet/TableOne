@@ -164,7 +164,7 @@ export default function TableOneSection() {
           {/* Bottom Text */}
           <p
             className="
-            Note1
+            Note2
             uppercase
             leading-tight
             text-[#B54323] 
