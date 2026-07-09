@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { FaInstagram } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
+import Link from 'next/link';
 export default function Header() {
     const router = useRouter()
     const pathname = usePathname()
@@ -61,9 +62,9 @@ export default function Header() {
 
         const element = document.getElementById(targetId)
 
-        if (element) { 
+        if (element) {
             const offsetPosition =
-                element.getBoundingClientRect().top + window.scrollY  
+                element.getBoundingClientRect().top + window.scrollY
 
             window.scrollTo({
                 top: offsetPosition,
@@ -120,90 +121,90 @@ export default function Header() {
                                 {item.name}
                             </a>
                         )
-                    })}
+                    })} 
                 </nav>
 
-                {/* Action Button */}
-                <div className="hidden lg:block">
-                    <a
-                        href="#request-seat"
-                        onClick={(e) => scrollToSection(e, '#request-seat')}
-                        className={`rounded-full border border-white px-4 py-2 Note2 transition-all hover:bg-white hover:text-black
+            {/* Action Button */}
+            <div className="hidden lg:block">
+                <a
+                    href="#request-seat"
+                    onClick={(e) => scrollToSection(e, '#request-seat')}
+                    className={`rounded-full border border-white px-4 py-2 Note2 transition-all hover:bg-white hover:text-black
                             ${activeSection === 'request-seat' ? 'bg-white text-black' : ''}
                         `}
-                    >
-                        REQUEST A SEAT
-                    </a>
-                </div>
-
-                {/* Mobile Hamburger */}
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="lg:hidden relative z-50 p-2 flex flex-col justify-center items-center gap-0.5 w-10 h-10 focus:outline-none"
-                    aria-label="Toggle Menu"
                 >
-                    <span className={`h-px w-6 bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
-                    <span className={`h-px w-6 bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ' opacity-0'}`} />
-                    <span className={`h-px w-6 bg-white transition-all duration-300 ${isOpen ? '-rotate-45  ' : ''}`} />
-                </button>
+                    REQUEST A SEAT
+                </a>
             </div>
 
-            {/* Mobile Drawer */}
-            <div
-                className={`
+            {/* Mobile Hamburger */}
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="lg:hidden relative z-50 p-2 flex flex-col justify-center items-center gap-0.5 w-10 h-10 focus:outline-none"
+                aria-label="Toggle Menu"
+            >
+                <span className={`h-px w-6 bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
+                <span className={`h-px w-6 bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ' opacity-0'}`} />
+                <span className={`h-px w-6 bg-white transition-all duration-300 ${isOpen ? '-rotate-45  ' : ''}`} />
+            </button>
+        </div>
+
+            {/* Mobile Drawer */ }
+    <div
+        className={`
                     fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#202A44]
                     transition-transform duration-300 lg:hidden
                     ${isOpen ? 'translate-x-0' : 'translate-x-full'}
                 `}
-            >
-                <nav className="flex flex-col items-center gap-y-8 text-lg">
-                    {navItems.map((item) => {
-                        const isActive = activeSection === item.href.replace('#', '');
-                        return (
-                            <a
-                                key={item.name}
-                                href={item.href}
-                                onClick={(e) => scrollToSection(e, item.href)}
-                                className={`transition-colors   Note2 hover:text-[#C6603F]
+    >
+        <nav className="flex flex-col items-center gap-y-8 text-lg">
+            {navItems.map((item) => {
+                const isActive = activeSection === item.href.replace('#', '');
+                return (
+                    <a
+                        key={item.name}
+                        href={item.href}
+                        onClick={(e) => scrollToSection(e, item.href)}
+                        className={`transition-colors   Note2 hover:text-[#C6603F]
                                     ${isActive ? 'text-[#C6603F] font-bold' : 'text-white'}
                                 `}
-                            >
-                                {item.name}
-                            </a>
-                        )
-                    })}
+                    >
+                        {item.name}
+                    </a>
+                )
+            })}
 
-                    <a
-                        href="#request-seat"
-                        onClick={(e) => scrollToSection(e, '#request-seat')}
-                        className={`mt-4 Note2 rounded-full border border-white px-4 py-1 transition-all hover:bg-white hover:text-black
+            <a
+                href="#request-seat"
+                onClick={(e) => scrollToSection(e, '#request-seat')}
+                className={`mt-4 Note2 rounded-full border border-white px-4 py-1 transition-all hover:bg-white hover:text-black
                             ${activeSection === 'request-seat' ? 'bg-white text-black' : ''}
                         `}
-                    >
-                        REQUEST A SEAT
-                    </a>
+            >
+                REQUEST A SEAT
+            </a>
 
-                    <div className=" flex items-center gap-6">
-                        <a
-                            href="https://instagram.com/yourusername"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Instagram"
-                            className="text-white transition-colors hover:text-[#C6603F]"
-                        >
-                            <FaInstagram className="h-6 w-6" />
-                        </a>
+            <div className=" flex items-center gap-6">
+                <a
+                    href="https://instagram.com/yourusername"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="text-white transition-colors hover:text-[#C6603F]"
+                >
+                    <FaInstagram className="h-6 w-6" />
+                </a>
 
-                        <a
-                            href="mailto:arshiya.khosla@gmail.com"
-                            aria-label="Email"
-                            className="text-white transition-colors hover:text-[#C6603F]"
-                        >
-                            <HiOutlineMail className="h-6 w-6" />
-                        </a>
-                    </div>
-                </nav>
+                <a
+                    href="mailto:arshiya.khosla@gmail.com"
+                    aria-label="Email"
+                    className="text-white transition-colors hover:text-[#C6603F]"
+                >
+                    <HiOutlineMail className="h-6 w-6" />
+                </a>
             </div>
-        </header>
+        </nav>
+    </div>
+        </header >
     )
 }

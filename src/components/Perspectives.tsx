@@ -165,7 +165,7 @@ export default function Perspectives() {
     "
                     >
                         {blogs.map((blog) => (
-                            <Link
+                            <a
                             href="/Blog"
                                 key={blog.id}
                                 className="
@@ -198,7 +198,7 @@ export default function Perspectives() {
                                         {blog.category}
                                     </span>
                                 </div>
-                            </Link>
+                            </a>
                         ))}
                     </div>
                 </div>
