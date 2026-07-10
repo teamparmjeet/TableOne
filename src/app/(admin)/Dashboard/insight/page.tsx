@@ -36,7 +36,8 @@ export default function page() {
   });
   const [filters, setFilters] = useState({
     title: "",
-    date: "",
+    year: "",
+    month: "",
     location: "All",
     category: "All",
   });
@@ -51,13 +52,41 @@ export default function page() {
     ...Array.from(new Set(blogs.map((blog) => blog.location))),
   ];
 
+  const months = [
+    { value: "01", label: "January" },
+    { value: "02", label: "February" },
+    { value: "03", label: "March" },
+    { value: "04", label: "April" },
+    { value: "05", label: "May" },
+    { value: "06", label: "June" },
+    { value: "07", label: "July" },
+    { value: "08", label: "August" },
+    { value: "09", label: "September" },
+    { value: "10", label: "October" },
+    { value: "11", label: "November" },
+    { value: "12", label: "December" },
+  ];
+
+  const years = Array.from(
+    new Set(
+      blogs.map((blog) => new Date(blog.date).getFullYear())
+    )
+  ).sort((a, b) => b - a);
+
   const filteredBlogs = blogs.filter((blog) => {
+    const blogDate = blog.date.split("T")[0];
+    const blogYear = blogDate.slice(0, 4);
+    const blogMonth = blogDate.slice(5, 7);
+
     const matchTitle = blog.title
       .toLowerCase()
       .includes(filters.title.toLowerCase());
 
-    const matchDate =
-      !filters.date || blog.date.startsWith(filters.date);
+    const matchYear =
+      !filters.year || blogYear === filters.year;
+
+    const matchMonth =
+      !filters.month || blogMonth === filters.month;
 
     const matchCategory =
       filters.category === "All" ||
@@ -69,11 +98,13 @@ export default function page() {
 
     return (
       matchTitle &&
-      matchDate &&
+      matchYear &&
+      matchMonth &&
       matchCategory &&
       matchLocation
     );
   });
+
   const fetchBlogs = async () => {
     try {
       const res = await fetch("/api/blog?admin=true", {
@@ -258,7 +289,8 @@ export default function page() {
               onClick={() =>
                 setFilters({
                   title: "",
-                  date: "",
+                  year: "",
+                  month: "",
                   location: "All",
                   category: "All",
                 })
@@ -270,8 +302,9 @@ export default function page() {
           </div>
 
 
-          <div className="grid gap-4 md:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-5">
 
+            {/* Search */}
             <input
               type="text"
               placeholder="Search insight..."
@@ -285,34 +318,24 @@ export default function page() {
               className="rounded-lg border border-[#36473F]/20 bg-[#F0EEE5]/40 px-4 py-3 text-sm outline-none transition focus:border-[#C6603F]"
             />
 
-
-            <input
-              type="date"
-              value={filters.date}
-              onChange={(e) =>
-                setFilters({
-                  ...filters,
-                  date: e.target.value,
-                })
-              }
-              className="rounded-lg border border-[#36473F]/20 bg-[#F0EEE5]/40 px-4 py-3 text-sm outline-none transition focus:border-[#C6603F]"
-            />
-
-
+            {/* Year */}
             <div className="relative">
               <select
-                value={filters.category}
+                value={filters.year}
                 onChange={(e) =>
                   setFilters({
                     ...filters,
-                    category: e.target.value,
+                    year: e.target.value,
+                    month: "", // year change hone par month reset
                   })
                 }
                 className="w-full appearance-none rounded-lg border border-[#36473F]/20 bg-[#F0EEE5]/40 px-4 py-3 text-sm outline-none focus:border-[#C6603F]"
               >
-                {categories.map((item) => (
-                  <option key={item}>
-                    {item}
+                <option value="">All Years</option>
+
+                {years.map((year) => (
+                  <option key={year} value={String(year)}>
+                    {year}
                   </option>
                 ))}
               </select>
@@ -323,7 +346,60 @@ export default function page() {
               />
             </div>
 
+            {/* Month */}
+            <div className="relative">
+              <select
+                value={filters.month}
+                disabled={!filters.year}
+                onChange={(e) =>
+                  setFilters({
+                    ...filters,
+                    month: e.target.value,
+                  })
+                }
+                className="w-full appearance-none rounded-lg border border-[#36473F]/20 bg-[#F0EEE5]/40 px-4 py-3 text-sm outline-none focus:border-[#C6603F] disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <option value="">All Months</option>
 
+                {months.map((month) => (
+                  <option key={month.value} value={month.value}>
+                    {month.label}
+                  </option>
+                ))}
+              </select>
+
+              <ChevronDown
+                size={16}
+                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#C6603F]"
+              />
+            </div>
+
+            {/* Category */}
+            <div className="relative">
+              <select
+                value={filters.category}
+                onChange={(e) =>
+                  setFilters({
+                    ...filters,
+                    category: e.target.value,
+                  })
+                }
+                className="w-full appearance-none uppercase rounded-lg border border-[#36473F]/20 bg-[#F0EEE5]/40 px-4 py-3 text-sm outline-none focus:border-[#C6603F]"
+              >
+                {categories.map((item) => (
+                  <option key={item} value={item}>
+                    {item === "All" ? "All Categories" : item}
+                  </option>
+                ))}
+              </select>
+
+              <ChevronDown
+                size={16}
+                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#C6603F]"
+              />
+            </div>
+
+            {/* Location */}
             <div className="relative">
               <select
                 value={filters.location}
@@ -333,11 +409,11 @@ export default function page() {
                     location: e.target.value,
                   })
                 }
-                className="w-full appearance-none rounded-lg border border-[#36473F]/20 bg-[#F0EEE5]/40 px-4 py-3 text-sm outline-none focus:border-[#C6603F]"
+                className="w-full appearance-none rounded-lg uppercase border border-[#36473F]/20 bg-[#F0EEE5]/40 px-4 py-3 text-sm outline-none focus:border-[#C6603F]"
               >
                 {locations.map((item) => (
-                  <option key={item}>
-                    {item}
+                  <option key={item} value={item}>
+                    {item === "All" ? "All Locations" : item}
                   </option>
                 ))}
               </select>
